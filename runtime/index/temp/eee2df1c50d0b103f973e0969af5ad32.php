@@ -1,0 +1,391 @@
+<?php /*a:1:{s:51:"/www/wwwroot/hm.otbax.cn/view/index/my/userpro.html";i:1657511108;}*/ ?>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>layuiAdmin 控制台主页一</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="/wwwroot/layui/assets/libs/layui/css/layui.css" />
+    <link rel="stylesheet" href="/wwwroot/layui/assets/module/admin.css" />
+   
+
+    <style>
+        .rice_tag {
+            width: 100%;
+            padding: 12px;
+            background: #e8eeff;
+            border: 1px solid #7696ff;
+            font-size: 12px;
+            font-weight: 400;
+            color: #FA6C00;
+            line-height: 20px;
+            -webkit-border-radius: 4px;
+            -moz-border-radius: 4px;
+            border-radius: 4px;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+    </style>
+    <style>
+        /* 用户信息 */
+        .user-info-head {
+            width: 110px;
+            height: 110px;
+            line-height: 110px;
+            position: relative;
+            display: inline-block;
+            border: 2px solid #eee;
+            border-radius: 50%;
+            overflow: hidden;
+            cursor: pointer;
+            margin: 0 auto;
+        }
+
+            .user-info-head:hover:after {
+                content: '\e681';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                color: #fff;
+                background-color: rgba(0, 0, 0, 0.3);
+                font-size: 28px;
+                padding-top: 2px;
+                font-style: normal;
+                font-family: layui-icon;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+            }
+
+            .user-info-head img {
+                width: 110px;
+                height: 110px;
+            }
+
+        .user-info-list-item {
+            position: relative;
+            padding-bottom: 8px;
+        }
+
+            .user-info-list-item > .layui-icon {
+                position: absolute;
+            }
+
+            .user-info-list-item > p {
+                padding-left: 30px;
+            }
+
+        .layui-line-dash {
+            border-bottom: 1px dashed #ccc;
+            margin: 15px 0;
+        }
+
+        /* 基本信息 */
+        #userInfoForm .layui-form-item {
+            margin-bottom: 25px;
+        }
+
+        /* 账号绑定 */
+        .user-bd-list-item {
+            padding: 14px 60px 14px 10px;
+            border-bottom: 1px solid #e8e8e8;
+            position: relative;
+        }
+
+            .user-bd-list-item .user-bd-list-lable {
+                color: #333;
+                margin-bottom: 4px;
+            }
+
+            .user-bd-list-item .user-bd-list-oper {
+                position: absolute;
+                top: 50%;
+                right: 10px;
+                margin-top: -8px;
+                cursor: pointer;
+            }
+
+            .user-bd-list-item .user-bd-list-img {
+                width: 48px;
+                height: 48px;
+                line-height: 48px;
+                position: absolute;
+                top: 50%;
+                left: 10px;
+                margin-top: -24px;
+            }
+
+                .user-bd-list-item .user-bd-list-img + .user-bd-list-content {
+                    margin-left: 68px;
+                }
+
+        .layui-form-label {
+            width: 100px;
+            color: #000;
+            line-height: 16px;
+            padding: 9px 15px;
+        }
+
+        .layui-input-block {
+            margin-left: 130px;
+            min-height: 28px;
+            line-height: 34px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="layui-fluid">
+
+        <div class="layui-card">
+            <div class="layui-card-header">个人中心</div>
+            <div class="layui-card-body">
+                <div class="rice_tag">
+                    请注意：
+                    <p>1、温馨提示：如在充值中遇到错误，请更换（IE）浏览器再试一遍！</p>
+                    <p>2、本站账户禁止虚假交易、信用卡套现或洗钱等交易行为，若有发现将封停账户。</p>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="layui-row layui-col-space15">
+            <!-- 左 -->
+            <div class="layui-col-sm12 layui-col-md3">
+                <div class="layui-card">
+                    <div class="layui-card-body" style="padding: 25px;">
+                        <div class="text-center layui-text">
+                            <div class="user-info-head" id="userInfoHead">
+                                <img src="/wwwroot/layui/assets/images/head.jpg" alt="">
+                            </div>
+                            <h2 style="padding-top: 20px;"><?php echo htmlentities($user['username']); ?></h2>
+                            <p style="padding-top: 8px;">余额：<?php echo htmlentities($user['money']); ?></p>
+                        </div>
+                        <div class="layui-text" style="padding-top: 30px;">
+                            <div class="user-info-list-item">
+                                <i class="layui-icon layui-icon-username"></i>
+                                <p>UID：<?php echo htmlentities($user['id']); ?></p>
+                            </div>
+                            <div class="user-info-list-item">
+                                <i class="layui-icon layui-icon-release"></i>
+                                <p>费率：<?php echo htmlentities($user['feilv']); ?> %</p>
+                            </div>
+                            <div class="user-info-list-item">
+                                <i class="layui-icon layui-icon-location"></i>
+                                <p>套餐：<?php echo htmlentities($user['vip_time']); ?></p>
+                            </div>
+                        </div>
+                        <div class="layui-line-dash"></div>
+                        <h3>友情提示</h3>
+                        <div class="layui-badge-list" style="padding-top: 6px;">
+                            <span class="layui-badge layui-bg-gray">安全</span>
+                            <span class="layui-badge layui-bg-gray">快捷</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 右 -->
+            <div class="layui-col-sm12 layui-col-md9">
+                <div class="layui-card">
+                    <!-- 选项卡开始 -->
+                    <div class="layui-tab layui-tab-brief" lay-filter="userInfoTab">
+                        <ul class="layui-tab-title">
+                            <li class="layui-this">基本信息</li>
+                            <li>账号绑定</li>
+                        </ul>
+                        <div class="layui-tab-content">
+                            <!-- tab1 -->
+                            <div class="layui-tab-item layui-show">
+                                <form class="layui-form" id="userInfoForm" lay-filter="userInfoForm">
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label layui-form-required">用户名:</label>
+                                        <div class="layui-input-block">
+                                            <input name="username" value="<?php echo htmlentities($user['username']); ?>" class="layui-input" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label layui-form-required">邮箱:</label>
+                                        <div class="layui-input-block">
+                                            <input name="email" value="<?php echo htmlentities($user['email']); ?>" class="layui-input" lay-verify="required" required="">
+                                        </div>
+                                    </div>
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label layui-form-required">昵称:</label>
+                                        <div class="layui-input-block">
+                                            <input name="nickname" value="<?php echo htmlentities($user['nickname']); ?>" class="layui-input" lay-verify="required" required="">
+                                        </div>
+                                    </div>
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label layui-form-required">手机号:</label>
+                                        <div class="layui-input-block">
+                                            <input name="mobile" value="<?php echo htmlentities($user['mobile']); ?>" class="layui-input" lay-verify="required" required="">
+                                        </div>
+                                    </div>
+                                    <div class="layui-form-item">
+                                        <div class="layui-input-block">
+                                            <button class="layui-btn layui-btn-normal" lay-filter="userInfoSubmit" lay-submit="">
+                                                更新基本信息
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- tab1 -->
+                            <div class="layui-tab-item" style="padding-bottom: 20px;">
+                                <div class="user-bd-list layui-text">
+                                    <div class="user-bd-list-item">
+                                        <div class="user-bd-list-lable">密保手机</div>
+                                        <div class="user-bd-list-text">已绑定手机：<?php echo htmlentities($user['mobile']); ?></div>
+                                        
+                                    </div>
+                                    <div class="user-bd-list-item">
+                                        <div class="user-bd-list-lable">密保邮箱</div>
+                                        <div class="user-bd-list-text">已绑定邮箱：<?php echo htmlentities($user['email']); ?></div>
+                                       
+                                    </div>
+
+
+                                    <?php if($user['is_bindqq'] == '1' && getConfig()['openlogin_type'] != '0'): ?>
+                                        <div class="user-bd-list-item">
+                                            <div class="user-bd-list-img">
+                                                <i class="layui-icon layui-icon-login-qq" style="color: #3492ED;font-size: 48px;"></i>
+                                            </div>
+                                            <div class="user-bd-list-content">
+                                                <div class="user-bd-list-lable">已绑定QQ</div>
+                                                <div class="user-bd-list-text">当前已绑定QQ账号</div>
+                                            </div>
+                                            <a id="JieBangQQ" class="user-bd-list-oper layui-btn layui-btn-danger btn-common locked">解绑</a>
+                                        </div>
+                                    <?php endif; if($user['is_bindqq'] != '1' && getConfig()['openlogin_type'] != '0'): ?>
+                                        <div class="user-bd-list-item">
+                                            <div class="user-bd-list-img">
+                                                <i class="layui-icon layui-icon-login-qq" style="color: #3492ED;font-size: 48px;"></i>
+                                            </div>
+                                            <div class="user-bd-list-content">
+                                                <div class="user-bd-list-lable">绑定QQ</div>
+                                                <div class="user-bd-list-text">当前未绑定QQ账号</div>
+                                            </div>
+                                            <?php if(getConfig()['openlogin_type'] != '2' && getConfig()['openlogin_type'] != '0'): ?>
+                                            <a target="_blank" href="/User/OAuthAccountLogin?type=qq" class="user-bd-list-oper layui-btn btn-common locked">绑定</a>
+                                            <?php else: ?>
+                                            <a target="_blank" href="/User/qqlogin" class="user-bd-list-oper layui-btn btn-common locked">绑定</a>
+                                            <?php endif; ?>
+                                        </div>
+                                    <?php endif; if($user['is_bindwx'] == '1' && getConfig()['openlogin_type'] != '0' && getConfig()['openlogin_type'] == '1'): ?>
+                                        <div class="user-bd-list-item">
+                                            <div class="user-bd-list-img">
+                                                <i class="layui-icon layui-icon-login-wechat" style="color: #4DAF29;font-size: 48px;"></i>
+                                            </div>
+                                            <div class="user-bd-list-content">
+                                                <div class="user-bd-list-lable">已绑定微信</div>
+                                                <div class="user-bd-list-text">当前已绑定绑定微信账号</div>
+                                            </div>
+                                            <a id="JieBangWX" class="user-bd-list-oper layui-btn layui-btn-danger btn-common locked">解绑</a>
+                                        </div>
+                                    <?php endif; if($user['is_bindwx'] != '1' && getConfig()['openlogin_type'] != '0' && getConfig()['openlogin_type'] == '1'): ?>
+                                        <div class="user-bd-list-item">
+                                            <div class="user-bd-list-img">
+                                                <i class="layui-icon layui-icon-login-wechat" style="color: #4DAF29;font-size: 48px;"></i>
+                                            </div>
+                                            <div class="user-bd-list-content">
+                                                <div class="user-bd-list-lable">绑定微信</div>
+                                                <div class="user-bd-list-text">当前未绑定绑定微信账号</div>
+                                            </div>
+                                            <a target="_blank" href="/User/OAuthAccountLogin?type=wx" class="user-bd-list-oper layui-btn btn-common locked">绑定</a>
+                                        </div>
+                                    <?php endif; ?>
+                               
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- //选项卡结束 -->
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <script type="text/javascript" src="/wwwroot/layui/assets/libs/layui/layui.js"></script>
+    <script type="text/javascript" src="/wwwroot/layui/assets/js/common.js?v=318"></script>
+    <script>
+        layui.use(['layer', 'form', 'element', 'admin', 'notice'], function () {
+            var $ = layui.jquery;
+            var layer = layui.layer;
+            var form = layui.form;
+            var element = layui.element;
+            var admin = layui.admin;
+            var notice = layui.notice;
+
+            /* 选择头像 */
+            $('#userInfoHead').click(function () {
+                admin.cropImg({
+                    imgSrc: $('#userInfoHead>img').attr('src'),
+                    onCrop: function (res) {
+                        $('#userInfoHead>img').attr('src', res);
+                        parent.layui.jquery('.layui-layout-admin>.layui-header .layui-nav img.layui-nav-img').attr('src', res);
+                    }
+                });
+            });
+
+            $('#JieBangQQ').click(function () {
+                layer.confirm('你真的要解绑QQ绑定吗？', {
+                    btn: ['确认', '取消'] //按钮
+                }, function () {
+                    var loadIndex = layer.msg('加载中', { icon: 16, shade: 0.01 });
+                    $.get('/My/JieBangQQ', function (result) {
+                        layer.close(loadIndex);
+                        if (result.code == '1') {
+                            layer.msg(result.msg, { icon: 1 });
+                            setTimeout(function () {
+                                location.reload();
+                            }, 1000);
+                        } else {
+                            layer.msg(result.msg, { icon: 2 });
+                        }
+                    });
+                });
+            });
+
+            $('#JieBangWX').click(function () {
+                layer.confirm('你真的要解绑微信绑定吗？', {
+                    btn: ['确认', '取消'] //按钮
+                }, function () {
+                    var loadIndex = layer.msg('加载中', { icon: 16, shade: 0.01 });
+                    $.get('/My/JieBangWX', function (result) {
+                        layer.close(loadIndex);
+                        if (result.code == '1') {
+                            layer.msg(result.msg, { icon: 1 });
+                            setTimeout(function () {
+                                location.reload();
+                            }, 1000);
+                        } else {
+                            layer.msg(result.msg, { icon: 2 });
+                        }
+                    });
+                });
+            });
+
+
+            /* 监听表单提交 */
+            form.on('submit(userInfoSubmit)', function (obj) {
+                $.post('/my/userpro', obj.field, function (res) {
+                    //layer.close(loadIndex);
+                    if (res.code === 1) {
+                        notice.msg(res.msg, { icon: 1 });
+                    } else {
+                        notice.msg(res.msg, { icon: 2 });
+                    }
+                }, 'json');
+                return false;
+            });
+
+        });
+    </script>
+</body>
+</html>

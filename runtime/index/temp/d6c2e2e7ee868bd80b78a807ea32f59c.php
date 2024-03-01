@@ -1,0 +1,125 @@
+<?php /*a:1:{s:57:"/www/wwwroot/hm.otbax.cn/view/index/channel/zhuanjie.html";i:1669278182;}*/ ?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>layuiAdmin 控制台主页一</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="/wwwroot/layui/assets/libs/layui/css/layui.css" />
+    <link rel="stylesheet" href="/wwwroot/layui/assets/module/admin.css" />
+    <link href="/wwwroot/css/site.css" rel="stylesheet" />
+
+    <style>
+        .rice_tag {
+            width: 100%;
+            padding: 12px;
+            background: #e8eeff;
+            border: 1px solid #7696ff;
+            font-size: 12px;
+            font-weight: 400;
+            color: #FA6C00;
+            line-height: 20px;
+            -webkit-border-radius: 4px;
+            -moz-border-radius: 4px;
+            border-radius: 4px;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="layui-fluid">
+        <div class="layui-card">
+            <div class="layui-card-header">离线转接配置</div>
+            <div class="layui-card-body">
+               
+                <form class="layui-form" id="formBasForm" lay-filter="formBasForm">
+                    <div class="layui-col-lg12">
+                        <div class="layadmin-user-login-box layadmin-user-login-body layui-form vip">
+                            <div class="layui-form-item">
+                                <div class="layui-inline">
+                                <label class="layui-form-label">转接类型:</label>
+                                <div class="layui-input-block">
+                                    <select name="switch_type" lay-filter="switch_type"  id="switch_type" lay-verType="tips" lay-verify="required" required>
+                                        <option value="close" <?php if($user['switch_type'] == 'close'): ?> selected <?php endif; ?>>关闭</option>
+                                        <option value="epay" <?php if($user['switch_type'] == 'epay'): ?> selected <?php endif; ?>>易支付</option>
+                                    </select>
+                                </div>
+                                </div>
+                            </div>
+                            <div id="epay" <?php if($user['switch_type'] != 'epay'): ?> style="display: none;" <?php endif; ?>>
+                                  <div class="layui-form-item">
+                                <label class="layui-form-label">易支付API</label>
+                                <div class="layui-input-block email">
+                                    <input name="switch_url" value="<?php echo htmlentities($user['switch_url']); ?>" placeholder="请输入易支付API" class="layui-input" style="width:300px">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">易支付ID</label>
+                                <div class="layui-input-block email">
+                                    <input name="switch_id" value="<?php echo htmlentities($user['switch_id']); ?>" placeholder="请输入易支付ID" class="layui-input" style="width:300px">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">易支付KEY</label>
+                                <div class="layui-input-block email">
+                                    <input name="switch_key" value="<?php echo htmlentities($user['switch_key']); ?>" placeholder="请输入易支付KEY" class="layui-input" style="width:300px">
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layadmin-user-login-box layadmin-user-login-body layui-form vip vipx">
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                                <button class="layui-btn btn-xufei" lay-filter="formBasSubmit" lay-submit>立即修改</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <script type="text/javascript" src="/wwwroot/layui/assets/libs/layui/layui.js"></script>
+    <script type="text/javascript" src="/wwwroot/layui/assets/js/common.js?v=318"></script>
+    <script>
+        layui.use(['layer', 'form', 'laydate', 'notice'], function () {
+            var $ = layui.jquery;
+            var layer = layui.layer;
+            var form = layui.form;
+            var notice = layui.notice;
+            form.on('select(switch_type)',function (data) {
+                            if (data.value == 'epay') {
+                                $("#epay").show();
+                            }else {
+                               $("#epay").hide();
+                            }
+                        });
+            /* 监听表单提交 */
+            form.on('submit(formBasSubmit)', function (obj) {
+                $.post('/Channel/zhuanjie', obj.field, function (res) {
+                    //layer.close(loadIndex);
+                    if (res.code === 200) {
+                        notice.msg(res.msg, { icon: 1 });
+                    } else {
+                        notice.msg(res.msg, { icon: 2 });
+                    }
+                }, 'json');
+                return false;
+            });
+
+        });
+    </script>
+</body>
+</html>

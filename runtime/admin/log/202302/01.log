@@ -1,0 +1,1 @@
+[2023-02-01T21:18:19+08:00][error] [0]Argument 3 passed to app\BaseController::json() must be of the type array, string given, called in /www/wwwroot/hm.otbax.cn/app/BaseController.php on line 122

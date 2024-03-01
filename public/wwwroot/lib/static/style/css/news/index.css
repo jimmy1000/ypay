@@ -1,0 +1,392 @@
+@charset "UTF-8";
+/**
+ * index.scss 新闻资讯样式表
+ * @author 曾洁莹
+ * @date 2019-04-15
+ *
+ */
+/**
+ * var.scss 变量
+ * @author 吴小桂
+ * @date 2019-01-10
+ *
+ * --- function ----
+ * #function QMUI 功能相关
+ *
+ * --- common ----
+ * #common 通用
+
+ * --- component ----
+ * #button 按钮组件
+ * #dialog 对话框组件
+ * #mask 遮罩层组件
+ * #dropdownMenu 下拉菜单组件
+ * #tab 选项卡组件
+ * #inputText、#textarea 文本输入组件
+ *
+ */
+/**
+ * _mixin.scss
+ * @author Kayo
+ * @date 2014-10-31
+ *
+ */
+/**
+ * _tool.scss 常用工具方法
+ * @author Kayo
+ * @date 2015-08-23
+ *
+ */
+.zk-icon-news {
+    display: inline-block;
+    overflow: hidden;
+    font-size: 0;
+    line-height: 0;
+    background-image: url("/wwwroot/images/news-icons.png");
+    width: 13px;
+    height: 15px;
+    vertical-align: middle;
+    margin: -2px 10px 0 0;
+}
+
+.icon-news-title-1 {
+    background-position: 0 0;
+}
+
+.icon-news-title-2 {
+    background-position: 0 -24px;
+}
+
+.news-banner-box {
+    height: 299px;
+    background: url("/wwwroot/images/news-bg.jpg") no-repeat center center;
+}
+
+.news-banner-box .news-banner-content {
+    -webkit-animation: banner-slide-20 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0s 1;
+            animation: banner-slide-20 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0s 1;
+    padding-top: 158px;
+    color: #fff;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.news-wrap {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    margin: 30px auto 100px;
+}
+
+.left-nav {
+    min-width: 300px;
+    height: 1008px;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    padding: 0 10px;
+    background: #f5f6fa;
+    margin-right: 40px;
+    -webkit-box-flex: 0;
+    -webkit-flex-grow: 0;
+        -ms-flex-positive: 0;
+            flex-grow: 0;
+}
+
+.left-nav h2 {
+    line-height: 78px;
+    font-weight: bold;
+    border-bottom: 1px solid #e1e4f5;
+    padding: 0 10px;
+}
+
+.left-nav .news-list a {
+    color: #8a8c99;
+}
+
+.left-nav .news-list li {
+    padding: 0 10px;
+    line-height: 60px;
+    border-bottom: 1px solid #e1e4f5;
+}
+
+.left-nav .news-list li.active a, .left-nav .news-list li:hover a {
+    color: #0055ff;
+}
+
+.left-nav .news-list li.active .icon-news-title-1, .left-nav .news-list li:hover .icon-news-title-1 {
+    background-position: -20px 0;
+}
+
+.left-nav .news-list li.active .icon-news-title-2, .left-nav .news-list li:hover .icon-news-title-2 {
+    background-position: -20px -24px;
+}
+
+.right-content {
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
+}
+
+.news-list-wrap {
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    height: 167px;
+    padding-top: 40px;
+    border-bottom: 1px solid #e1e4f5;
+}
+
+.news-list-wrap .date {
+    float: left;
+    width: 50px;
+    height: 66px;
+    margin-right: 40px;
+}
+
+.news-list-wrap .date p {
+    line-height: 32px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.news-list-wrap .date p:first-child {
+    background: -webkit-gradient(linear, left top, right top, from(#007bff), to(#0052ff));
+    background: -webkit-linear-gradient(left, #007bff, #0052ff);
+    background: -o-linear-gradient(left, #007bff, #0052ff);
+    background: linear-gradient(90deg, #007bff, #0052ff);
+    color: #fff;
+    border-radius: 4px 4px 0 0;
+}
+
+.news-list-wrap .date p:last-child {
+    background: #f5f6fa;
+    color: #0055ff;
+    border-radius: 0 0 4px 4px;
+}
+
+.news-list-wrap .text-wrap .more {
+    color: #0055ff;
+}
+
+.news-list-wrap .text-wrap p:first-child {
+    font-size: 18px;
+}
+
+.news-list-wrap .text-wrap p:first-child a {
+    color: #333;
+}
+
+.news-list-wrap .text-wrap P:last-child {
+    color: #8a8c99;
+    line-height: 28px;
+}
+
+.article-wrap {
+    padding-top: 60px;
+}
+
+.article-wrap .title {
+    font-weight: bold;
+}
+
+.article-wrap .release-time {
+    color: #8a8c99;
+    margin: 20px 0 40px;
+}
+
+.article-wrap p {
+    line-height: 30px;
+    margin: 10px 0;
+    white-space: pre-wrap;
+}
+
+.article-wrap #content-wrap p {
+    text-indent: 28px;
+    line-height: 32px;
+}
+
+.paper-wrap {
+    margin-top: 30px;
+    line-height: 40px;
+    color: #0055ff;
+    text-align: center;
+}
+
+.paper-wrap .pagination li {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.paper-wrap .pagination li a {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+}
+
+.paper-wrap .pagination .active {
+    background: #0055ff;
+    color: #fff;
+}
+
+.paper-wrap .pagination .disabled {
+    color: #8a8c99;
+    cursor: no-drop;
+}
+
+.crumbs {
+    line-height: 80px;
+    border-bottom: 1px solid #e1e4f5;
+}
+
+.crumbs a {
+    color: #0055ff;
+}
+
+.crumbs .active {
+    color: #333;
+}
+
+.m-news-wrap, .m-article-wrap, .m-article-menu-wrap {
+    display: none;
+}
+
+@media screen and (max-width: 1000px) {
+    .news-banner-box {
+        height: 200px;
+        background-size: cover;
+    }
+    .news-banner-box .news-banner-content {
+        padding-top: 85px;
+        text-align: center;
+    }
+    .news-wrap {
+        display: none;
+    }
+    .m-news-wrap {
+        display: block;
+    }
+    .m-news-wrap .m-news-header .nav a {
+        display: inline-block;
+        width: 50%;
+        height: 42px;
+        line-height: 42px;
+        float: left;
+        text-align: center;
+        font-size: 14px;
+        color: #555555;
+        border-bottom: 1px solid #e1e4f5;
+    }
+    .m-news-wrap .m-news-header .nav a.active {
+        color: #0055ff;
+        border-bottom: 2px solid #0055ff;
+    }
+    .m-news-wrap .m-scroll {
+        width: 100%;
+        height: 100%;
+        overflow-y: auto;
+    }
+    .m-news-wrap .m-scroll li {
+        -webkit-box-sizing: border-box;
+                box-sizing: border-box;
+        padding: 30px 15px;
+        border-bottom: 1px solid #e1e4f5;
+    }
+    .m-news-wrap .m-scroll li .title {
+        font-size: 16px;
+    }
+    .m-news-wrap .m-scroll li .des {
+        height: 42px;
+        color: #8a8c99;
+        font-size: 14px;
+    }
+    .m-news-wrap .m-scroll .date-wrap {
+        width: 48px;
+        text-align: center;
+        float: left;
+        margin-right: 20px;
+    }
+    .m-news-wrap .m-scroll .date-wrap p {
+        height: 32px;
+        line-height: 32px;
+    }
+    .m-news-wrap .m-scroll .date-wrap p:first-child {
+        color: #fff;
+        background: -webkit-gradient(linear, left top, right top, from(#007bff), to(#0052ff));
+        background: -webkit-linear-gradient(left, #007bff, #0052ff);
+        background: -o-linear-gradient(left, #007bff, #0052ff);
+        background: linear-gradient(90deg, #007bff, #0052ff);
+        border-radius: 4px 4px 0 0;
+    }
+    .m-news-wrap .m-scroll .date-wrap p:last-child {
+        background: #f5f6fa;
+        color: #0055ff;
+        border-radius: 0 0 4px 4px;
+    }
+    .m-more-wrap {
+        display: block;
+        min-height: 40px;
+        text-align: center;
+        line-height: 40px;
+        color: #444;
+        margin: 15px;
+    }
+    .m-more-wrap .loading-more {
+        display: block;
+        border: 1px solid #e5e5e5;
+        background-color: #f7f8fa;
+        color: #333;
+    }
+    .m-article-menu-wrap {
+        display: block;
+        position: relative;
+    }
+    .m-article-menu-wrap .menu-nav {
+        height: 80px;
+        line-height: 80px;
+        -webkit-box-sizing: border-box;
+                box-sizing: border-box;
+        padding: 0 15px;
+        border-bottom: 1px solid #e1e4f5;
+    }
+    .m-article-menu-wrap .menu-nav a {
+        color: #333;
+        font-size: 16px;
+    }
+    .m-article-menu-wrap .menu-list {
+        display: none;
+        position: absolute;
+        width: 100%;
+        -webkit-box-sizing: border-box;
+                box-sizing: border-box;
+        padding: 0 15px;
+        background: #f5f6fa;
+    }
+    .m-article-menu-wrap .menu-list a {
+        display: block;
+        color: #333333;
+        font-size: 16px;
+        margin: 20px 0;
+    }
+    .m-article-wrap {
+        display: block;
+        background: #f5f6fa;
+        -webkit-box-sizing: border-box;
+                box-sizing: border-box;
+        padding: 40px 15px;
+    }
+    .m-article-wrap .title {
+        font-size: 20px;
+        font-weight: bold;
+    }
+    .m-article-wrap .release-time {
+        color: #8a8c99;
+        margin: 4px 0 20px;
+    }
+    .m-article-wrap .content p {
+        line-height: 28px;
+    }
+}

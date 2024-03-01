@@ -1,0 +1,2 @@
+[2023-02-18T21:25:46+08:00][error] [0]Argument 1 passed to think\View::fetch() must be of the type string, null given
+[2023-02-18T21:25:51+08:00][error] [0]Argument 1 passed to think\View::fetch() must be of the type string, null given

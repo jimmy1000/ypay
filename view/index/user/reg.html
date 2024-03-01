@@ -1,0 +1,127 @@
+{include file="core/user_header" title="注册"/}
+<div class="mb-4 login-page-title">
+	<p>注册新账户</p>
+</div>
+<div class="row">
+	<div class="col-lg-12">
+		<div class="form-group position-relative">
+			<label class="text-muted">账户 *</label>
+			<div class="input-group mb-3">
+				<input type="text" class="form-control pl-3" placeholder="请输入您的账户(英文|数字)" name="username" required="">
+			</div>
+		</div>
+	</div>
+	<div class="col-lg-12">
+		<div class="form-group position-relative">
+			<label class="text-muted">密码 *</label>
+			<input type="password" class="form-control pl-3" placeholder="请输入密码" name="password" required="">
+		</div>
+	</div>
+	<div class="col-lg-12">
+		<div class="form-group position-relative">
+			<label class="text-muted">确认密码 *</label>
+			<input type="password" class="form-control pl-3" placeholder="再次输入密码" name="password2" lay-verify="equalTo"
+				lay-equalTo="[name=password]" required="">
+		</div>
+	</div>
+	<div class="col-lg-12">
+		<div class="form-group position-relative">
+			<label class="text-muted">邮箱 *</label>
+			<div class="input-group mb-3">
+				<input type="text" class="form-control pl-3" placeholder="请输入邮箱" name="email" id="email" required="">
+			</div>
+		</div>
+	</div>
+
+
+	{if condition="$config['regcode-type']== '1'"}
+	<div class="col-lg-12">
+		<div class="form-group position-relative">
+			<label class="text-muted">手机号 *</label>
+			<div class="input-group mb-3">
+				<input type="text" class="form-control pl-3" placeholder="请输入手机号" name="mobile" id="mobile" required="">
+			</div>
+		</div>
+	</div>
+	<div class="col-lg-12">
+		<div class="form-group position-relative">
+			<div class="input-group mb-3">
+				<input type="text" class="form-control" placeholder="短信验证码 *" name="captcha" aria-label="请输入短信验证码"
+					aria-describedby="send-email-code">
+				<div class="input-group-append">
+					<button class="btn btn-outline-secondary go-send-email-code" type="button"
+						id="send-code">发送验证码</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	{/if}
+	{if condition="$config['regcode-type'] == '2'"}
+	<div class="col-lg-12">
+		<div class="form-group position-relative">
+			<div class="input-group mb-3">
+				<input type="text" class="form-control" placeholder="邮箱验证码 *" name="captcha" aria-label="请输入邮箱验证码"
+					aria-describedby="send-email-code">
+				<div class="input-group-append">
+					<button class="btn btn-outline-secondary go-send-email-code" type="button"
+						id="send-code">发送验证码</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	{/if}
+	{if condition="$config['captcha-type'] == '1'"}
+	<div class="col-lg-12">
+		<div class="form-group position-relative">
+			<label class="text-muted">验证码</label>
+			<div class="captcha_div">
+				<input class="form-control" name="ordinary_captcha" placeholder="请输入验证码" autocomplete="off"
+					lay-verType="tips" lay-verify="required" required />
+				<img id="codeimg" class="login-captcha" alt="" />
+			</div>
+		</div>
+	</div>
+	{elseif condition="$config['captcha-type'] == '2'"}
+	<!-- 动态引入验证码JS示例 -->
+	<script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+	<div class="col-12" id='tencentCaptcha'><button type="button" class="TencentCaptcha btn btn-light w-100 mb-3"
+			id="TencentCaptcha" data-appid="{:$config['tencent_CaptchaAppId']}" data-cbfn="qq_captcha_callback"
+			lay-filter="qq_captcha_callback" lay-submit><span class="spinner-grow spinner-grow-sm text-primary mr-2"
+				role="status" aria-hidden="true"></span>点击按钮进行验证</button></div>
+	{elseif condition="$config['captcha-type'] == '3' "}
+	<script src="https://static.geetest.com/v4/gt4.js"></script>
+	<div class="col-12" id='geetest_captcha'></div>
+	{/if}
+	<div class="col-12 mb-2">
+
+		<small class="text-muted">
+			<input type="checkbox" name="igree" id="igree" style="display:inline;" checked>
+			注册登录即表示同意 <a class="btn-link" href="{:$config['user_agreement']}">用户协议</a>、<a class="btn-link"
+				href="{:$config['privacy']}">隐私政策</a>
+		</small>
+	</div>
+	<div class="col-lg-12 mb-0">
+		<button class="btn btn-primary w-100 go-register" lay-filter="loginSubmit" lay-submit>立即注册</button>
+	</div>
+
+	<div class="col-12 text-center">
+		<p class="mb-0 mt-3"><small class="mr-2">已有账号 ?</small> <a href="/User/Login" class="btn-link">立即登录</a></p>
+	</div>
+</div>
+</form>
+</div>
+<div class="position-abs d-lg-block d-none">
+	<div class="footer-copyright text-center">
+		<p class="m-0 small">Copyright © 2022 <a href="/">{:$config['sitename']}</a> - All
+			rights reserved<span class="sep"> | </span><a href="https://beian.miit.gov.cn" target="_blank"
+				rel="noreferrer nofollow">{:$config['icp']}</a></p>
+	</div>
+</div>
+
+</div>
+</div>
+
+</main>
+
+</div>
+{include file="core/reg_bottom" functons="Reg"/}

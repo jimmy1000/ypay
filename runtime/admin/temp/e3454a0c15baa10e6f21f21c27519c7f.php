@@ -1,0 +1,137 @@
+<?php /*a:2:{s:53:"/www/wwwroot/hm.otbax.cn/view/admin/update/index.html";i:1670906886;s:54:"/www/wwwroot/hm.otbax.cn/view/admin/common/common.html";i:1670898482;}*/ ?>
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> YPAY Admin - 专业的平台开发商! </title>
+    <link rel="stylesheet" href="/static/component/pear/css/pear.css" />
+    <link rel="stylesheet" href="/static/admin/css/soulTable.css" />
+    <script src="/static/component/layui/layui.js"></script>
+    <script src="/static/component/pear/pear.js"></script>
+</head>
+    <style>
+        .layui-input-block {
+            margin-left: 35px;
+            min-height: 36px; 
+        }
+        .pear-btn-primary{
+            width: 120px;
+        }
+        .layui-btn-primary{
+            width: 120px;
+            height: 36px; 
+            margin-bottom: 5px;
+        }
+        @media (max-width:765px){
+            .layui-btn-primary{
+                
+                 float: right;
+                margin-right: 35px;
+            }
+               
+        }
+        .page-title {
+            font-size: 18px;
+            margin: 5px;
+            margin: 15px 37px;
+            line-height: 60px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            color: inherit;
+        }
+        .update_tips {
+            font-size: 13px;
+            color: #666;
+            font-weight: 600;
+        }
+        .update_conter {
+            background: #f9f9f9;
+            border-radius: 4px;
+            padding: 20px;
+            margin: 15px 37px;
+            margin-top: 15px;
+        }
+    </style>
+<!-- 代 码 结 构 -->
+<body class="pear-container" marginwidth="0" marginheight="0">
+<div class="layui-row layui-col-space10">
+    <div class="layui-card">
+        <div class="layui-card-header">在线更新</div>
+        <div class="layui-card-body">
+            <form class="layui-form" action="javascript:void(0);" onsubmit="return false">
+                <div class="layui-form-item">
+                    <?php if($update_info['code']==1){ ?>
+                    <h4 class="page-title" style="font-weight:300;">最新版本：<?php echo htmlentities($update_info['version']); ?></h4>
+                    <?php }else{ ?>
+                    <h4 class="page-title" style="font-weight:300;">当前版本：<?php echo htmlentities($ver); ?></h4>
+                    <?php } ?>
+                </div>
+                <div class="layui-form-item">
+                    <div class="update_conter" style="max-height: 300px;overflow: auto;">
+                        <div class="update_tips">
+                            <?php if($update_info['code']==1){ ?>
+                                <?php echo html_entity_decode($update_info['updateMsg']); }else{ ?>
+                                <?php echo htmlentities($update_info['msg']); } ?>
+                                
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-input-block" >
+                        <?php if($update_info['code']==1){ ?>
+                        <button class="pear-btn pear-btn-primary" lay-submit lay-filter="Update">更 新</button>
+                        <?php }else{ ?>
+                        <button class="pear-btn pear-btn-primary" lay-submit lay-filter="Check">检 测</button>
+                        <?php } ?>
+                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    layui.use(['form', 'button', 'popup'], function() {
+		let $ = layui.jquery;
+        var form = layui.form;
+        var button = layui.button;
+        var popup = layui.popup;
+
+        form.on('submit(Update)', function (obj) {
+             layer.closeAll();
+                $.post('<?php echo htmlentities(app('request')->root()); ?>/update/update_ver',
+                function(data)
+                {
+                    layer.alert(data.msg, function(index){
+                        window.location.reload();
+                    });
+                    
+                    return false;
+                });
+        });
+
+        form.on('submit(Check)', function (obj) {
+            var index = layer.msg('正在检测中,请稍后...', {icon: 16, time: 3000});
+            layer.close(index);
+            layer.msg('正在检测请稍等片刻...', {
+                icon: 6,
+                time: 3000
+            }, function(){
+                $.post('<?php echo htmlentities(app('request')->root()); ?>/update/checkver',
+                function(data)
+                {
+                    layer.alert(data.msg, function(index){
+                        window.location.reload();
+                    });
+                    
+                    return false;
+                });
+            });
+            return false;
+        });
+
+    })
+</script>
+</body>
+</html>

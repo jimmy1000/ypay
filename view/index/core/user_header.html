@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+		<link rel="profile" href="https://gmpg.org/xfn/11">
+		<title>[title] - {:$config['sitename']}</title>
+		<meta name="keywords" content="{:$config['key']}">
+        <meta name="description" content="{:$config['desc']}">
+		<link rel='stylesheet' id='bootstrap-css' href='/static/index/css/bootstrap.min.css' media='all' />
+		<link rel='stylesheet' id='app-css' href='/static/index/css/app.css' media='all' />
+		 <link rel="stylesheet" href="/wwwroot/layui/assets/libs/layui/css/layui.css" />
+		<style>
+		    .captcha_div{
+		       position: relative; 
+		    }
+		    #geetest_captcha{
+		        margin-bottom: 15px;
+		    }
+		    .geetest_holder{
+		        width:100%  !important;
+		    }
+		    .geetest_btn_svg{
+		        display: none;
+		    }
+			.login-captcha {
+				height: 39px;
+				width: 106px;
+				cursor: pointer;
+				box-sizing: border-box;
+				border: 1px solid #e6e6e6;
+				border-radius: 2px !important;
+				position: absolute;
+				right: 0;
+				top: 0;
+			}
+			.layui-form-checkbox{
+			    display: none;
+			}
+		</style>
+	</head>
+	<body
+		class="page-template page-template-pages page-template-page-login page-template-pagespage-login-php page page-id-1209 navbar-sticky pagination-infinite_button no-off-canvas sidebar-right">
+		<div id="app" class="site">
+
+			<div lass="header-gap"></div>
+
+			<main id="main" role="main" class="site-content">
+			     {if condition="$config['bgtype'] == '0'"}
+				<div class="bg-img-cover" style="background-image: url('{:$config['bg']}')"></div>
+				{else}
+				<div class="bg-img-cover" style="background-image: url('{:$config['api_bg']}')"></div>
+                {/if}
+				<div class="container">
+					<div class="row justify-content-center align-items-center login-warp">
+						<div class="col-sm-10 col-md-8 col-lg-6 col-xl-5">
+
+							<!-- Form -->
+							<form class="layui-form js-validate card p-lg-5 p-4">
+								<div class="d-flex flex-center mb-4">
+									<div class="logo-wrapper">
+										<a href="/">
+											<img class="logo regular" src="{:$config['logo']}" alt="{:$config['sitename']}" style="width:162px;">
+										</a>
+
+									</div>
+								</div>

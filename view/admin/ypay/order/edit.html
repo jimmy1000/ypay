@@ -1,0 +1,168 @@
+ {include file="common/common"/}
+<body>
+<form class="layui-form" action="">
+    <div class="mainBox" style="bottom:unset;">
+        <div class="main-container">
+            <div class="layui-form-item">
+						<label class="layui-form-label">
+							商品名称
+						</label>
+						<div class="layui-input-block">
+							<input type="text" class="layui-input layui-form-danger" disabled="disabled"  type="text"
+								value="{$model['name']??""}" />
+						</div>
+					</div>
+			<div class="layui-form-item">
+						<label class="layui-form-label">
+							网站名称
+						</label>
+						<div class="layui-input-block">
+							<input type="text" class="layui-input layui-form-danger" disabled="disabled"  type="text"
+								value="{$model['sitename']??""}" />
+						</div>
+					</div>
+			<div class="layui-form-item">
+						<label class="layui-form-label">
+							支付方式
+						</label>
+						<div class="layui-input-block">
+						    {if condition="$model['type'] == 'alipay'"}
+                            <input type="text" class="layui-input layui-form-danger" disabled="disabled"  type="text"
+								value="支付宝" />
+                            {elseif condition="$model['type'] == 'wxpay'"}
+                            <input type="text" class="layui-input layui-form-danger" disabled="disabled"  type="text"
+								value="微信" />
+							{else}
+							<input type="text" class="layui-input layui-form-danger" disabled="disabled"  type="text"
+								value="QQ" />
+                            {/if}
+							
+						</div>
+					</div>
+            <div class="layui-form-item">
+						<label class="layui-form-label">
+							本地单号
+						</label>
+						<div class="layui-input-block">
+							<input type="text" class="layui-input layui-form-danger" disabled="disabled"  type="text"
+								value="{$model['out_trade_no']??""}" />
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">
+							商户单号
+						</label>
+						<div class="layui-input-block">
+							<input type="text" class="layui-input layui-form-danger" disabled="disabled" name="money" type="text"
+								value="{$model['trade_no']??""}" />
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">
+							异步通知地址
+						</label>
+						<div class="layui-input-block">
+							<input type="text" id="vip_time" class="layui-input layui-form-danger" disabled="disabled" name="vip_time" type="text"
+								value="{$model['notify_url']??""}" />
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">
+							同步通知地址
+						</label>
+						<div class="layui-input-block">
+							<input type="text" class="layui-input layui-form-danger" disabled="disabled" name="feilv" type="text"
+								value="{$model['return_url']??""}" />
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">
+							用户ID
+						</label>
+						<div class="layui-input-block">
+							<input type="text" class="layui-input layui-form-danger" disabled="disabled" name="password" type="text"
+								value="{$model['user_id']??""}" />
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">
+							实付金额
+						</label>
+						<div class="layui-input-block">
+							<input type="text" class="layui-input layui-form-danger" disabled="disabled" name="email" type="text"
+								value="{$model['truemoney']??""}" />
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">
+							费率金额
+						</label>
+						<div class="layui-input-block">
+							<input type="text" class="layui-input layui-form-danger" name="mobile" type="text"
+								value="{$model['feilvmoney']??""}" />
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">
+							下单时间
+						</label>
+						<div class="layui-input-block">
+							<input type="text" class="layui-input layui-form-danger" disabled="disabled" name="mobile" type="text"
+								value="{$model['create_time']??""}" />
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">
+							支付时间
+						</label>
+						<div class="layui-input-block">
+							<input type="text" class="layui-input layui-form-danger" disabled="disabled" name="mobile" type="text"
+								value="{$model['end_time']??""}" />
+						</div>
+					</div>
+        </div>
+    </div>
+</form>
+<script>
+    layui.use(['form', 'jquery', 'layedit', 'uploads'], function () {
+        let form = layui.form;
+        let $ = layui.jquery;
+        let layedit = layui.layedit
+        layedit.set({
+            uploadImage: {
+                url: "{$Request.root}/index/upload"
+            }
+        });
+        //建立编辑器
+        
+        form.on('submit(save)', function (data) {
+            
+            $.ajax({
+                data: JSON.stringify(data.field),
+                dataType: 'json',
+                contentType: 'application/json',
+                type: 'post',
+                success: function (res) {
+                    //判断有没有权限
+                    if (res && res.code == 999) {
+                        layer.msg(res.msg, {
+                            icon: 5,
+                            time: 2000,
+                        })
+                        return false;
+                    } else if (res.code == 200) {
+                        layer.msg(res.msg,{icon:1,time:1000}, function () {
+                            parent.layer.close(parent.layer.getFrameIndex(window.name));//关闭当前页
+                            parent.layui.table.reload("dataTable");
+                        });
+                    } else {
+                        layer.msg(res.msg,{icon:2,time:1000});
+                    }
+                }
+            })
+            return false;
+        });
+    })
+</script>
+</body>
+</html>

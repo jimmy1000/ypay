@@ -1,0 +1,134 @@
+
+<!doctype html>
+<html lang="zh-CN"> 
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>邀请返利</title>
+<link rel='stylesheet' id='bootstrap-css-css'  href='/static/index/css/bootstrap.min.css' media='all' />
+</head>
+
+<body style="background-color: unset;margin: 15px;">
+
+
+<div class="layui-fluid" style="background: white;">
+
+        <div class="layui-card">
+            <div class="layui-card-body">
+               <div class="col-lg-12 col-md-7 col-12 mt-4 p-4">
+                <div class="ml-lg-8">
+                    <div class="border-bottom pb-4">
+                        <h5>赞助邀请推广 USER AFF</h5>
+                        <p class="text-muted mb-0">赞助邀请推广你我他，邀请好友加入，享受高额佣金。</p>
+                    </div>
+                    
+                        <div class="row">
+
+                            <div class="col-lg-6 mt-4">
+                                <div class="alert alert-success" role="alert">
+                                    <h4 class="alert-heading">
+                                        <font style="vertical-align: inherit;">{$aff_percentage}%</font>
+                                    </h4>
+                                    <p><font style="vertical-align: inherit;">当前佣金比例</font></p>
+                                </div>
+                            </div><!--end col-->
+
+                            <div class="col-lg-6 mt-4">
+                                <div class="alert alert-primary" role="alert">
+                                    <h4 class="alert-heading">
+                                        <font style="vertical-align: inherit;">￥{$aff_money}</font>
+                                    </h4>
+                                    <p><font style="vertical-align: inherit;">累计推广佣金</font></p>
+                                </div>
+                            </div><!--end col-->
+
+                            <div class="col-lg-12 mt-4">
+                                <div class="component-wrapper rounded shadow">
+                                    <div class="p-4 border-bottom">
+                                        <h4 class="title mb-0"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 佣金详情 </font></font></h4>
+                                    </div>
+        
+                                    <div class="p-2">
+                                        <ul class="list-group list-group-flush m-0">
+                                            <li class="list-group-item">
+                                              <div class="row">
+                                                <div class="col-sm-4"><p class="mb-0 text-muted">推广链接</p></div>
+                                                <div class="col-sm-8">
+                                                    <font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{$aff_url}?aff={$user}</font>&nbsp;<a class="js-clipboard" data-clipboard-text="{$aff_url}?aff={$user}" id="copyAff" href="javascript:void(0)">复制</a></font>
+                                                </div>
+                                              </div>
+                                            </li>
+                                            <li class="list-group-item">
+                                              <div class="row">
+                                                <div class="col-sm-4"><p class="mb-0 text-muted">推广用户数</p></div>
+                                                <div class="col-sm-8">
+                                                  <p class="mb-0"><span class="badge badge-secondary mr-2 mb-2">{$aff_people}</span></p>
+                                                </div>
+                                              </div>
+                                            </li>
+                                            <li class="list-group-item">
+                                              <div class="row">
+                                                <div class="col-sm-4"><p class="mb-0 text-muted">佣金比例</p></div>
+                                                <div class="col-sm-8">
+                                                  <p class="mb-0"><span class="badge badge-secondary mr-2 mb-2">{$aff_percentage}%</span></p>
+                                                </div>
+                                              </div>
+                                            </li>
+                                            <li class="list-group-item">
+                                              <div class="row">
+                                                <div class="col-sm-4"> <p class="mb-0 text-muted">累计推广佣金</p></div>
+                                                <div class="col-sm-8">
+                                                  <p class="mb-0"><span class="badge badge-info mr-2 mb-2">{$aff_money}</span></p>
+                                                </div>
+                                              </div>
+                                            </li>
+                                            
+                                            <li class="list-group-item" style=" font-size: 14px; ">
+                                                <p class="text-muted mb-0"><font style="vertical-align: inherit;">推广邀请规则说明：</font></p>
+                                                <p class="text-muted mb-0"><font style="vertical-align: inherit;">仅推荐链接奖励有效计算</font></p>
+                                                <p class="text-muted mb-0"><font style="vertical-align: inherit;">推荐链接只在用户第一次注册登陆时候记录推荐人关系，切勿注册过在用推荐链接，这样会记录不上去。也就是只对新用户有效</font></p>
+                                                <p class="text-muted mb-0"><font style="vertical-align: inherit;">佣金会在通过您链接用户付款成功后写入资金明细。</font></p>
+
+                                            </li>
+                                          </ul>
+                                    </div>
+                                </div>
+                            </div><!--end col-->
+
+
+                            
+                        </div><!--end row-->
+
+                </div>
+            </div><!--end col-->
+            </div>
+
+
+
+        </div>
+    </div>
+</body>
+ <script type="text/javascript" src="/wwwroot/layui/assets/libs/layui/layui.js"></script>
+    <script type="text/javascript" src="/wwwroot/layui/assets/js/common.js?v=318"></script>
+    <script type="text/javascript" src="/static/index/js/index/clipboard.min.js"></script>
+    <script>
+        layui.use(['layer', 'form', 'laydate'], function () {
+            var $ = layui.jquery;
+            var layer = layui.layer;
+            var form = layui.form;
+            
+            $('#copyAff').click(function () {
+                clipboard = new ClipboardJS('.js-clipboard');
+                clipboard.on('success', function(e) {
+                    
+                    layer.msg('复制成功');
+                });
+                
+                clipboard.on('error', function(e) {
+                    layer.msg('复制失败,请手动复制');
+                });
+            });
+
+        });
+    </script>
+</html>

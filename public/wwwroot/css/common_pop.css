@@ -1,0 +1,346 @@
+﻿body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, button, textarea, p, blockquote, th, td {
+    margin: 0;
+    padding: 0;
+}
+
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, button, textarea, p, blockquote, th, td {
+    margin: 0;
+    padding: 0;
+}
+
+body, input, button, select, textarea {
+    font-family: "微软雅黑";
+    font-size: 12px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+    font-size: 100%;
+}
+
+address, caption, cite, code, dfn, em, strong, th, var {
+    font-style: normal;
+    font-weight: normal;
+}
+
+a, a:hover {
+    text-decoration: none;
+}
+
+img {
+    border: none;
+}
+
+a {
+    color: #333;
+}
+
+ol, ul, li {
+    list-style: none;
+}
+
+table {
+    border-collapse: collapse
+}
+
+input, select {
+    outline: none;
+}
+
+    input[type="submit"], input[type="button"] {
+        outline: none;
+        cursor: pointer;
+    }
+
+.dn {
+    display: none;
+}
+
+.di {
+    display: inline;
+}
+
+.db {
+    display: block;
+}
+
+.dib {
+    display: inline-block;
+}
+
+div.dib {
+    *display: inline;
+    *zoom: 1;
+}
+
+.g0 {
+    color: #000;
+}
+
+.g3 {
+    color: #333;
+}
+
+.g6 {
+    color: #666;
+}
+
+.g9 {
+    color: #999;
+}
+
+.gc {
+    color: #ccc;
+}
+
+.wh {
+    color: white;
+}
+
+.f0 {
+    font-size: 0;
+}
+
+.f12 {
+    font-size: 12px;
+}
+
+.f13 {
+    font-size: 13px;
+}
+
+.f14 {
+    font-size: 14px;
+}
+
+.f16 {
+    font-size: 16px;
+}
+
+.f18 {
+    font-size: 18px;
+}
+
+.f20 {
+    font-size: 20px;
+}
+
+.f24 {
+    font-size: 24px;
+}
+
+.f28 {
+    font-size: 28px;
+}
+
+.tc {
+    text-align: center;
+}
+
+.tr {
+    text-align: right;
+}
+
+.tl {
+    text-align: left;
+}
+
+.tj {
+    text-align: justify;
+}
+
+.vm {
+    vertical-align: middle;
+}
+
+.l {
+    float: left;
+}
+
+.r {
+    float: right;
+}
+
+.cl {
+    clear: both;
+}
+
+.rel {
+    position: relative;
+}
+
+.abs {
+    position: absolute;
+}
+
+.zx1 {
+    z-index: 1;
+}
+
+.zx2 {
+    z-index: 2;
+}
+
+.poi {
+    cursor: pointer;
+}
+
+.def {
+    cursor: default;
+}
+
+.ovh {
+    overflow: hidden;
+}
+
+.ova {
+    overflow: auto;
+}
+
+.vh {
+    visibility: hidden;
+}
+
+.vv {
+    visibility: visible;
+}
+
+.opa0 {
+    opacity: 0;
+    filer: alpha(opacity=0);
+}
+
+.z {
+    *zoom: 1;
+}
+
+/* multiply CSS */
+.auto {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.fix {
+    *zoom: 1;
+}
+
+    .fix:after {
+        display: table;
+        content: '';
+        clear: both;
+    }
+
+.ell {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.loading {
+    background: url(about:blank) no-repeat center;
+}
+
+.bd_none {
+    border: 0;
+    outline: none;
+}
+
+.disabled {
+    outline: 0 none;
+    cursor: default !important;
+    opacity: .4;
+    filer: alpha(opacity=40);
+    -ms-pointer-events: none;
+    pointer-events: none;
+}
+
+.ha-oh {
+    height: auto;
+    overflow: hidden;
+}
+
+.vm-wrap:before {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+.vm-wrap img {
+    vertical-align: middle;
+}
+
+.box {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+a, input[type="submit"], input[type="button"] {
+    transition: background-color .2s linear;
+}
+
+a {
+    color: inherit;
+}
+
+.pop-common {
+    display: none;
+    padding: 0 0 30px;
+}
+
+    .pop-common .head {
+        background: #fafafa;
+        font-size: 18px;
+        line-height: 60px;
+        color: #a8a8a8;
+        text-align: center;
+    }
+
+    .pop-common .cm-txt {
+        padding: 26px 70px 40px;
+        line-height: 2;
+    }
+
+        .pop-common .cm-txt .parag {
+            margin-bottom: 20px;
+        }
+
+    .pop-common .cm-act {
+        text-align: center;
+    }
+
+        .pop-common .cm-act .btn {
+            display: inline-block;
+            margin: 0 12px;
+            width: 120px;
+            line-height: 34px;
+            background: #0089ec;
+            color: #fff;
+            vertical-align: middle;
+            border: none;
+            cursor: pointer;
+        }
+
+        .pop-common .cm-act .btn2 {
+            background: #ff5253;
+        }
+
+        .pop-common .cm-act .btn:hover {
+            box-shadow: 0 3px 10px 0 rgba(0,137,227,0.4);
+        }
+
+        .pop-common .cm-act .btn2:hover {
+            box-shadow: 0 3px 10px 0 rgba(255,82,83,0.4);
+        }
+
+.pop-cmn-wrap .layui-layer-setwin .layui-layer-close2 {
+    right: 0px;
+    top: 6px;
+    width: 20px;
+    height: 20px;
+    background: url(../images/icon_pop_closed.png) no-repeat center;
+}
+
+    .pop-cmn-wrap .layui-layer-setwin .layui-layer-close2:hover {
+        background-position: center;
+    }
